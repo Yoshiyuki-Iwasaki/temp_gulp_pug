@@ -1,13 +1,15 @@
 # Gulpのテンプレート
 
-各バージョン
+##  各バージョン
 Node.js v10.14.1
 npm        v  6.4.1
 Gulp       v  3.9.1
 webpack    v  4.29.0
 @babel/core v 7.0.0
 
-ファイル構成
+## インストール方法
+
+##  ファイル構成
 ```
 .
 ├── package-lock.json
@@ -29,4 +31,3 @@ webpack    v  4.29.0
      └── scss
         └── style.scss
 ```
-# temp_gulp_pug
