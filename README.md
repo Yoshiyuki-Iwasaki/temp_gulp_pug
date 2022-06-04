@@ -1,4 +1,4 @@
-# Gulpのテンプレート
+# GULP + PUG + SCSSテンプレート
 
 ##  各バージョン
 Node.js v10.14.1
