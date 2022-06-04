@@ -1,0 +1,35 @@
+/*====================================================================
+COMMON LAYOUT
+====================================================================*/
+html {
+  font-size: 62.5%;
+}
+body {
+  background: $white;
+  color: $black;
+  @include fontSmoothing;
+  @include fontFeature;
+}
+/*-----------------------------------------------
+サイトコンテンツ
+------------------------------------------------*/
+.siteContent {
+  padding-top: 100px; // header固定の場合のpadding-top(PC)
+
+  @include sp {
+    padding-top: 50px; // header固定の場合のpadding-top(SP)
+  }
+}
+/*-----------------------------------------------
+改行
+------------------------------------------------*/
+.sp_inline  {
+  @include pc {
+    display: none;
+  }
+}
+.pc_inline  {
+  @include sp {
+    display: none;
+  }
+}

@@ -1,0 +1,421 @@
+/*********************************
+
+_base.scss
+
+*********************************/
+
+$minPcSize: 1000px;
+
+$mqMinPcSize: 769px;
+$tabletSize: 768px;
+
+$mobileSize: 425px;
+
+$minW: min-width;
+$maxW: max-width;
+
+//Colors
+$white: #fff;
+$black: #000;
+$green: #2c9f4e;
+$gray: #edf0f1;
+$lightgray: #dcdcdc;
+$red: #d40000;
+$lightred: #ffd9da;
+
+// mediaquery for PC
+@mixin mqMinPc($minW:$mqMinPcSize) {
+  @media screen and (min-width: $minW) {
+    @content;
+  }
+}
+
+// mediaquery for Tablet
+@mixin mqMaxTab($maxW:$tabletSize) {
+  @media screen and (max-width: $maxW) {
+    @content;
+  }
+}
+
+// mediaquery for SP
+@mixin mqMaxSp($maxW:$mobileSize) {
+  @media screen and (max-width: $maxW) {
+    @content;
+  }
+}
+
+// mediaquery range
+@mixin mqMaxMin($property01,$property02) {
+	@media screen and (max-width: $property01) and (min-width: $property02) {
+	  @content;
+	}
+}
+
+// mediaquery Min
+@mixin mqMin($mqMin) {
+  @media screen and (min-width: $mqMin) {
+    @content;
+  }
+}
+
+// mediaquery Max
+@mixin mqMax($mqMax) {
+  @media screen and (max-width: $mqMax) {
+    @content;
+  }
+}
+
+@mixin transition {
+	transition: all .2s linear;
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+}
+
+@mixin transitionOpacity {
+	transition: opacity .2s linear;
+	-webkit-transition: opacity .2s linear;
+	-o-transition: opacity .2s linear;
+}
+
+@mixin displayFlex{
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin transform($property) {
+	-webkit-transform: $property;
+	-ms-transform: $property;
+	transform: $property;
+}
+
+@mixin background-image($property) {
+	background: url($property) no-repeat;
+}
+
+@mixin gradient01 {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(252,235,226,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(252,235,226,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 30%,rgba(252,235,226,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fcebe2',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin shadow01 {
+	-webkit-box-shadow: 3px 1px 7px 1px rgba(105,103,105,0.3);
+	-moz-box-shadow: 3px 1px 7px 1px rgba(105,103,105,0.3);
+	box-shadow: 3px 1px 7px 1px rgba(105,103,105,0.3);
+}
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	word-break: break-all;
+}
+
+body, html{
+  height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	display: block;
+	box-sizing: border-box;
+	font-family: 'Noto Sans JP', '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: bold;
+}
+
+section {
+	position: relative;
+}
+
+main {
+	margin: 0 auto;
+	display: block;
+	position: relative;
+
+	@include mqMinPc {
+		min-width: $minPcSize;
+	}
+
+	@include mqMaxSp {
+		margin-top: 72px;
+	}
+}
+
+input,
+button,
+textarea,
+select {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    line-height: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+	min-height: 120px;
+}
+
+input::placeholder,
+textarea::placeholder  {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+textarea {
+	resize: none;
+}
+
+a {
+	text-decoration: none;
+	color: $black;
+	@include transitionOpacity;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+img {
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+	-webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+p {
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 1.2;
+	letter-spacing: 0;
+  word-break: break-all;
+}
+
+.en{
+  p{
+    word-break: keep-all;
+  }
+}
+
+table, th, td {
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: #f0f0f0;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+
+	th,td {
+		font-size: 16px;
+		line-height: 1.2;
+		text-align: center;
+		border: none;
+	}
+
+	th {
+		padding: 14px 6px 13px 6px;
+		font-size: 16px;
+		font-weight: 600;
+		background: #fbfbfb;
+		white-space: nowrap;
+	}
+
+	td {
+		padding: 22px 6px;
+		font-size: 16px;
+		font-weight: normal;
+	}
+
+	thead {
+		tr {
+			th {
+				&:first-of-type {
+					padding: 14px 6px 13px 20px;
+				}
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			background: $white;
+			&:nth-child(even) {
+				background: #fbfbfb;
+			}
+
+			td {
+				&:first-of-type {
+					padding: 22px 6px 22px 20px;
+				}
+			}
+
+		}
+	}
+
+	tfoot {
+		tr {
+			td {
+				&:first-of-type {
+					padding: 6px 6px 6px 20px;
+				}
+			}
+		}
+	}
+
+	.checkbox__col {
+		width: 43px;
+	}
+
+	&.four--col {
+		th {
+			width: calc(100% / 4);
+		}
+	}
+
+	&.three--col {
+		th {
+			&.title__col {
+				width: 30%;
+				text-align: left;
+			}
+
+			&.date__col {
+				width: 30%;
+			}
+
+			&.status__col {
+				width: 30%;
+			}
+		}
+
+		td {
+			padding: 15px 7.5px;
+		}
+	}
+
+	&.with--check--input {
+		.title {
+			margin-left: 0;
+		}
+	}
+
+	a {
+		display: block;
+		@include transitionOpacity;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	.custom--checkbox {
+		margin: 0 auto;
+		padding: 0;
+    display: block;
+    width: 15px;
+		height: 15px;
+
+		.custom--checkmark {
+			border: 1px solid #7f7f7f;
+			background: $white;
+
+			&:after {
+				top: 2px;
+			}
+		}
+
+		input {
+			&:checked ~ .custom--checkmark {
+				border: none;
+			}
+		}
+	}
+
+}
+
+.sp {
+	display: none !important;
+}
+
+//PC
+@include mqMinPc {
+	body {
+		margin: 0 auto;
+		min-width: $minPcSize;
+		position: relative;
+	}
+
+	.inner--container {
+		margin: 0 auto;
+	}
+
+	.main {
+		width: 100%;
+		height: 100%;
+		//max-width: 1440px;
+
+		&__wrapper {
+			margin: 0 auto;
+			width: 100%;
+		}
+	}
+
+	.section {
+		&__wrapper {
+			margin: 0 auto;
+			max-width: 1280px;
+		}
+	}
+}
+
+@include mqMin(1441px) {
+}
+
+//SP
+@include mqMaxSp {
+	body {
+		min-width: 320px;
+	}
+
+	.section {
+
+	}
+
+	.inner--container {
+		width: 100%;
+	}
+
+	.pc {
+		display: none !important;
+	}
+
+	.sp {
+		display: block !important;
+	}
+}

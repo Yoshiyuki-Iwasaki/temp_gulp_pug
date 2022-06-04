@@ -1,0 +1,214 @@
+// text
+@mixin fontSmoothing {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin fontFeature {
+  font-feature-settings: "palt"1;
+}
+
+
+// mediaquery
+@mixin pc($minW: $windowPC) {
+  @media screen and (min-width: $minW) {
+    @content;
+  }
+}
+
+@mixin sp($maxW: $windowSP) {
+  @media screen and (max-width: $maxW) {
+    @content;
+  }
+}
+
+
+// hover
+@mixin trs($time: 0.3s) {
+  transition: $time;
+}
+
+@mixin hoverOp($opacity: 0.6) {
+  opacity: $opacity;
+}
+
+@mixin hoverTextColor($color: $blue) {
+  color: $color;
+}
+
+
+// コンテンツ幅
+@mixin u_contentCenter($width: $contentWidth) {
+  @include pc {
+    max-width: $width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include sp {
+    width: 100%;
+    padding-left: $paddingLR;
+    padding-right: $paddingLR;
+  }
+}
+
+
+// テキスト
+@mixin titleText($size: 0,$spSize: 0,$color: $black,$font: $mainFontType1) {
+  font-family: $font;
+  color: $color;
+  @include pc {
+    font-size: ($size + 20) + px;
+    font-size: (($size + 20) / 10) + rem;
+  }
+  @include sp {
+    font-size: ($spSize + 15) + px;
+    font-size: (($spSize + 15) / 10) + rem;
+  }
+}
+
+//テキスト最上行のline-heightを取り除く
+@mixin lhCropTop($line-height) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+}
+//テキスト最下行のline-heightを取り除く
+@mixin lhCropBottom($line-height) {
+  &::after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+}
+
+/*-----------------------------------------------
+ビジュアルエディタ入力エリア
+------------------------------------------------*/
+@mixin visualEditArea {
+	color: #333;
+	font-size: 15px;
+	line-height: 1.7;
+	letter-spacing: 0.04em;
+
+	* {
+		margin-top: 1.75em;
+
+		&:nth-child(1) {
+			margin-top: 0;
+		}
+	}
+
+	a {
+    color: #00609f;
+    border-bottom: solid 1px #00609f;
+		@include trs;
+		@include hoverOp;
+	}
+
+	h1,h2,h3,h4,h5,h6 {
+		font-weight: bold;
+	}
+
+	h1 {
+		font-size: 32px;
+		line-height: 1.4;
+	}
+
+	h2 {
+		margin: 2em 0 0.5em;
+    display: block;
+		font-size: 27px;
+		line-height: 1.6;
+	}
+
+	h3 {
+		font-size: 22px;
+		line-height: 1.6;
+	}
+	h4,h5,h6 {
+		font-size: 16px;
+		line-height: 1.6;
+	}
+	h1 + h2,
+	h2 + h3,
+	h3 + h4,
+	h4 + h5,
+	h5 + h6 {
+		margin-top: 0.5em;
+	}
+	p {
+		margin-top: 0.75em;
+		font-size: 15px;
+		line-height: 1.7;
+	}
+	strong {
+		font-weight: bold;
+	}
+	em {font-style: italic;}
+  ul {
+    li {
+      list-style-type: disc;
+    }
+  }
+  ol {
+    li {
+      list-style-type: decimal;
+    }
+  }
+	ul,ol {
+		margin-top: 1em;
+		padding-left: 1.4em;
+
+		li {
+			margin-top: 0.5em;
+			line-height: 1.4;
+		}
+	}
+	sup,sub {font-size: 10px;}
+	table {
+		margin-top: 3em;
+		width: 100%;
+		border-collapse: collapse;
+
+		tr {
+			th,td {
+				padding: 15px 20px 16px;
+				line-height: 1.5;
+				text-align: left;
+			}
+
+			th {
+				width: 25%;
+			}
+		}
+	}
+
+	img {
+		width: auto;
+		max-width: 100%;
+		height: auto;
+		margin-top: 2em;
+
+		&.alignnone,
+		&.alignleft {
+			margin-top: 2em;
+		}
+
+		&.aligncenter {
+			display: block;
+			margin: 2em auto 0;
+		}
+
+		&.alignright {
+			display: block;
+			margin: 2em 0 0 auto;
+		}
+	}
+}

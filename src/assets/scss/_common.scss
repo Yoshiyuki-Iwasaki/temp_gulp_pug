@@ -1,0 +1,873 @@
+/*********************************
+
+_common.scss
+
+*********************************/
+
+body{
+  background-color: $gray;
+}
+
+.main--container{
+  max-width: $minPcSize;
+  margin: 0 auto;
+}
+
+.header{
+  background-color: $white;
+  width: 100%;
+  min-height: 75px;
+
+  &--container{
+    @include displayFlex;
+    align-items: center;
+    height: 75px;
+
+    img{
+      max-width: 175px;
+      margin: 0;
+    }
+  }
+}
+
+.banner{
+  margin-top: 50px;
+  min-height: 135px;
+
+  &--container{
+    min-height: inherit;
+    border-radius: 15px;
+    background-color: $green;
+    position: relative;
+    overflow: hidden;
+    @include displayFlex;
+    align-items: center;
+  }
+
+  &__img{
+    max-width: 214px;
+    position: absolute;
+    left: -50px;
+    top: -10px;
+  }
+
+  &--content{
+    padding-left: 75px;
+
+    p, h1{
+      color: $white;
+    }
+
+    h1{
+      font-size: 30px;
+    }
+
+    p{
+      font-size: 17px;
+    }
+  }
+}
+
+.description{
+  margin-top: 45px;
+
+  &--instruct{
+    p{
+      line-height: 28px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  &--guide{
+    margin-top: 25px;
+
+    p{
+      line-height: 25px;
+      font-size: 13px;
+
+      span{
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.form{
+  margin-top: 35px;
+
+  &--hidden{
+    opacity: 0;
+  }
+
+  &--container{
+    padding: 50px;
+    background-color: $white;
+    border-radius: 15px;
+  }
+
+  &--box{
+    @include displayFlex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $lightgray;
+    margin-bottom: 12px;
+
+    &:last-child{
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    &__label{
+      p{
+        font-size: 17px;
+        font-weight: 600;
+      }
+    }
+
+    &--container{
+      max-width: 715px;
+      width: 100%;
+    }
+
+    &--wrapper{
+      width: 100%;
+      max-width: 715px;
+      @include displayFlex;
+      justify-content: space-between;
+
+      label{
+        font-size: 12px;
+      }
+
+
+      input::placeholder{
+        font-size: 13px;
+        font-weight: 400;
+      }
+
+      .form--box--inputRow{
+        width: 100%;
+        max-width: 470px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &--wrapperTwo{
+      .form--box--input{
+        max-width: 350px;
+        width: 100%;
+        @include displayFlex;
+        flex-direction: column;
+
+        input{
+          width: 100%;
+          height: 40px;
+          padding-left: 20px;
+          box-sizing: border-box;
+          border: 1px solid $lightgray;
+        }
+      }
+    }
+
+    &--wrapperThree{
+      .form--box--input{
+        max-width: 225px;
+        width: 100%;
+        @include displayFlex;
+        flex-direction: column;
+
+        .custom__select{
+          position: relative;
+
+          select{
+            display: none;
+          }
+
+          .select{
+            &__hide{
+              display: none;
+            }
+
+            &__items{
+              position: absolute;
+              background-color: $lightgray;
+              top: calc(100% + 1px);
+              left: -1px;
+              right: auto;
+              width: calc(100% + 2px);
+              z-index: 99;
+
+              div{
+                font-size: 13px;
+                min-height: 40px;
+                line-height: 40px;
+                padding: 0 20px;
+                cursor: pointer;
+
+                &:hover{
+                  background-color: $green;
+                  color: $white;
+                }
+
+                &:last-child{
+                  border-bottom: none;
+                }
+              }
+            }
+
+            &__selected{
+              border: 1px solid $lightgray;
+              min-height: 40px;
+              line-height: 40px;
+              padding: 0 20px;
+              font-size: 13px;
+              position: relative;
+
+              &::after{
+                content: "";
+                position: absolute;
+                right: 20px;
+                top: 38%;
+                width: 11px;
+                height: 11px;
+                background-image: url(./../img/contact-icon02.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+        input{
+          width: 100%;
+          height: 40px;
+          padding-left: 20px;
+          box-sizing: border-box;
+          border: 1px solid $lightgray;
+        }
+      }
+    }
+
+    &--wrapperRadio{
+      justify-content: flex-start;
+
+      .form--box--input{
+        @include displayFlex;
+
+        label{
+          @include displayFlex;
+          align-items: center;
+          position: relative;
+          padding-left: 30px;
+          margin-right: 50px;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+
+          input[type='radio']{
+            display: none;
+
+            &:checked ~ span:after{
+              transform: translate(-50%, -50%) scale(1);
+            }
+          }
+
+          span{
+            width: 20px;
+            height: 20px;
+            display: block;
+            border-radius: 50%;
+            border: 1px solid $lightgray;
+            position: absolute;
+            left: 0;
+
+            &::after{
+              content: "";
+              width: 13px;
+              height: 13px;
+              background-color: $green;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%) scale(0);
+              border-radius: 50%;
+              transition: .10s ease-out;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--boxRadio{
+    margin-top: 18px;
+  }
+
+  &--privacy{
+    @include displayFlex;
+    justify-content: center;
+    margin-top: 25px;
+
+    label{
+      position: relative;
+      padding-left: 30px;
+      font-size: 12px;
+
+      input[type='checkbox']{
+        display: none;
+
+        &:checked ~ span:after{
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      a{
+        color: blue;
+      }
+
+      span{
+        width: 20px;
+        height: 20px;
+        border: 1px solid $lightgray;
+        background-color: $white;
+        position: absolute;
+        left: 0;
+        cursor: pointer;
+
+        &::after{
+          content: "";
+          width: 12px;
+          height: 10px;
+          background-image: url('./../img/contact-icon03.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          transition: .10s ease-out;
+        }
+      }
+    }
+  }
+
+  &--submit{
+    margin-top: 45px;
+    margin-bottom: 100px;
+    @include displayFlex;
+    justify-content: center;
+
+    input{
+      max-width: 400px;
+      width: 100%;
+      min-height: 60px;
+      background-color: $green;
+      border-radius: 15px;
+      font-size: 22px;
+      font-weight: 600;
+      color: $white;
+      cursor: pointer;
+      @include transition;
+
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.error{
+  margin-top: 35px;
+
+  &--message{
+    font-size: 11px;
+    margin-top: 10px;
+    color: $red;
+  }
+
+  &--input{
+    background-color: $lightred;
+    border: 1px solid $red !important;
+  }
+
+  &--container{
+    padding: 15px 40px;
+    border: 1px solid $red;
+    background-color: $lightred;
+
+    p{
+      line-height: 23px;
+      font-size: 12px;
+      color: $red;
+    }
+  }
+}
+
+//Tab
+@include mqMaxTab {
+  .main--container{
+    margin: 0 30px;
+  }
+
+  .header{
+    min-height: 88px;
+
+    &--container{
+      height: 88px;
+
+      img{
+        max-width: 184px;
+      }
+    }
+  }
+
+  .banner{
+    min-height: 180px;
+
+    &__img{
+      max-width: 301px;
+      top: -37px;
+      left: -110px;
+    }
+
+    &--content{
+      padding-left: 30px;
+
+      h1{
+        font-size: 40px;
+      }
+
+      p{
+        font-size: 24px;
+      }
+    }
+  }
+
+  .description{
+    &--instruct{
+      p{
+        font-size: 26px;
+        line-height: 46px;
+      }
+    }
+
+    &--guide{
+      p{
+        font-size: 24px;
+        line-height: 40px;
+
+        span{
+          font-size: 26px;;
+        }
+      }
+    }
+  }
+
+  .form{
+
+    &--container{
+      padding: 80px 30px;
+    }
+
+    &--box{
+      display: block;
+      margin-bottom: 50px;
+      padding-bottom: 50px;
+
+      &__label{
+        p{
+          font-size: 30px;
+          margin-bottom: 40px;
+        }
+      }
+
+      &--container{
+        max-width: 100%;
+        position: relative;
+      }
+
+      &--wrapper{
+        max-width: 100%;
+        display: block;
+
+        .form--box--inputRow{
+          max-width: 100%;
+          margin-top: 40px;
+
+          .form--box--input{
+            width: 45%;
+          }
+        }
+
+        input::placeholder{
+          font-size: 26px;
+        }
+      }
+
+      &--wrapperTwo{
+        .form--box--input{
+          max-width: 100%;
+          position: relative;
+          margin-bottom: 40px;
+
+          &:last-child{
+            margin-bottom: 0;
+          }
+
+          p{
+            font-size: 24px;
+            margin-bottom: 10px;
+          }
+
+          input{
+            height: 80px;
+            font-size: 26px;
+          }
+        }
+      }
+
+      &--wrapperThree{
+        .form--box--input{
+          max-width: 100%;
+
+          p{
+            font-size: 24px;
+            margin: 10px 0;
+          }
+
+          .custom__select{
+            .select{
+              &__items{
+                div{
+                  min-height: 80px;
+                  line-height: 80px;
+                  font-size: 26px;
+                }
+              }
+
+              &__selected{
+                min-height: 80px;
+                line-height: 80px;
+                font-size: 26px;
+
+                &::after{
+                  width: 22px;
+                  height: 22px;
+                }
+              }
+            }
+          }
+
+          input{
+            height: 80px;
+          }
+        }
+      }
+
+      &--wrapperRadio{
+        justify-content: flex-start;
+
+        .form--box--input{
+          @include displayFlex;
+
+          label{
+            padding-left: 60px;
+            font-size: 28px;
+
+
+            span{
+              width: 50px;
+              height: 50px;
+
+              &::after{
+                width: 26px;
+                height: 26px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--boxRadio{
+      .error--message{
+        margin-top: 10px;
+      }
+    }
+
+    &--privacy{
+      margin-top: 40px;
+
+      label{
+        font-size: 24px;
+        padding-left: 50px;
+
+        span{
+          width: 32px;
+          height: 32px;
+          top: 0;
+
+          &::after{
+            width: 20px;
+            height: 15px;
+          }
+        }
+      }
+    }
+
+    &--submit{
+      input{
+        max-width: 100%;
+        min-height: 100px;
+        font-size: 36px;
+        margin-top: 80px;
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  .error{
+    &--message{
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: 0;
+      font-size: 22px !important;
+    }
+
+    &--container{
+      p{
+        line-height: 46px;
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+//Sp
+@include mqMaxSp{
+  .main--container{
+    margin: 0 15px;
+  }
+
+  .header{
+    min-height: 44px;
+
+    &--container{
+      height: 44px;
+
+      img{
+        max-width: 92px;
+      }
+    }
+  }
+
+  .banner{
+    min-height: 90px;
+
+    &--container{
+      border-radius: 7.5px;
+    }
+
+    &__img{
+      max-width: 150px;
+      top: -18.5px;
+      left: -55px;
+    }
+
+    &--content{
+      padding-left: 15px;
+
+      h1{
+        font-size: 20px;
+      }
+
+      p{
+        font-size: 12px;
+      }
+    }
+  }
+
+  .description{
+    &--instruct{
+      p{
+        font-size: 13px;
+        line-height: 23px;
+      }
+    }
+
+    &--guide{
+      p{
+        font-size: 12px;
+        line-height: 20px;
+
+        span{
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .form{
+    &--container{
+      padding: 40px 15px;
+      border-radius: 7.5px;
+    }
+
+    &--box{
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+
+      &__label{
+        p{
+          font-size: 15px;
+          margin-bottom: 20px;
+        }
+      }
+
+      &--wrapper{
+        .form--box--inputRow{
+          margin-top: 20px;
+        }
+
+        input::placeholder{
+          font-size: 13px;
+        }
+      }
+
+      &--wrapperTwo{
+        .form--box--input{
+          margin-bottom: 20px;
+
+          p{
+            font-size: 12px;
+            margin-bottom: 5px;
+          }
+
+          input{
+            height: 40px;
+            font-size: 13px;
+            padding-left: 10px;
+          }
+        }
+      }
+
+      &--wrapperThree{
+        .form--box--input{
+          p{
+            font-size: 12px;
+            margin: 5px 0;
+          }
+
+          .custom__select{
+            .select{
+              &__items{
+                div{
+                  min-height: 40px;
+                  line-height: 40px;
+                  font-size: 13px;
+                  padding: 0 10px;
+                }
+              }
+
+              &__selected{
+                min-height: 40px;
+                line-height: 40px;
+                font-size: 13px;
+                padding: 0 10px;
+
+                &::after{
+                  width: 11px;
+                  height: 11px;
+                  right: 10px;
+                }
+              }
+            }
+          }
+
+          input{
+            height: 40px;
+            padding-left: 10px;
+          }
+        }
+      }
+
+      &--wrapperRadio{
+        .form--box--input{
+          label{
+            font-size: 14px;
+            padding-left: 30px;
+
+            span{
+              width: 25px;
+              height: 25px;
+
+              &::after{
+                width: 13px;
+                height: 13px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    &--boxRadio{
+      .error--message{
+        margin-top: 5px;
+      }
+    }
+
+    &--privacy{
+      margin-top: 20px;
+
+      label{
+        font-size: 12px;
+        padding-left: 25px;
+
+        span{
+          width: 16px;
+          height: 16px;
+
+          &::after{
+            width: 10px;
+            height: 7.5px;
+          }
+        }
+      }
+    }
+
+    &--submit{
+      input{
+        min-height: 50px;
+        font-size: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-radius: 7.5px;
+      }
+    }
+  }
+
+  .error{
+    &--message{
+      font-size: 11px !important;
+    }
+
+    &--container{
+      padding: 7.5px 20px;
+
+      p{
+        line-height: 23px;
+        font-size: 12px;
+      }
+    }
+  }
+}
